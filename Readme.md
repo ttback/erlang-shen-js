@@ -18,10 +18,14 @@ Usage:
   
   ```Javascript
   var erlangjs = require("erlang-shen-js");
+  
+  //Wrap erlang code with: 
+  //"-module(tmp).\n-compile({parse_transform, shen}).\n-compile(export_all).\n-js([start/0]).\nstart() ->\n";
   erlangjs.wrap(code, function(ast) {
         //ast: the js obj holding the AST tree
   });
   
+  //Parse complete erlang code
   erlangjs.parse(code, function(ast) {
         //ast: the js obj holding the AST tree
   });
