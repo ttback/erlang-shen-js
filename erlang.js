@@ -6,6 +6,8 @@ var esprima = require('esprima');
 var exec = require('exec');
 var path = require('path');
 var mv = require('mv');
+
+//Config flags
 var INPUT_ERLANG_FILE_PATH = undefined;
 var JS_AST_OUTPUT_ENABLED = false;
 var DEFAULT_JS_OUTPUT_DIR_PATH = "./";
@@ -23,12 +25,18 @@ function parseSourceCode(code) {
 
 }
 
-function deleteFiles(filename){
-	if (!JS_OUTPUT_FILE)
-		fs.unlinkSync(filename + ".js");
-	fs.unlinkSync(filename + ".beam");
+function deleteFiles(filename) {
+    var jsfile = filename + ".js";
+    var beamfile = filename + ".beam";
+
+    if (fs.existsSync(jsfile))
+        fs.unlinkSync(jsfile);
+    
+    if (fs.existsSync(beamfile))
+    fs.unlinkSync(beamfile);
 }
 
+//Handle user input
 program
     .version('0.0.1')
     .option('-t, --ast', 'Output js ast tree', ouptutAst)
@@ -43,11 +51,13 @@ if (program.args.length > 0) {
     process.exit();
 }
 
-function cleanUp(code, filename){
-	deleteFiles(filename);
+function cleanUp(code, filename) {
+    deleteFiles(filename);
 
-	process.exit(code);
+    process.exit(code);
 }
+
+
 if (fs.existsSync(INPUT_ERLANG_FILE_PATH)) {
     exec(['erlc', '-pa', './deps', INPUT_ERLANG_FILE_PATH], function(err, out, code) {
         if (err instanceof Error)
@@ -61,23 +71,24 @@ if (fs.existsSync(INPUT_ERLANG_FILE_PATH)) {
         var shen_output_js = DEFAULT_JS_OUTPUT_DIR_PATH + js_filename
 
         var jsCode = fs.readFileSync(shen_output_js, "utf8");
-
         var ast = esprima.parse(jsCode);
-        
+
         if (JS_AST_OUTPUT_ENABLED) {
             process.stdout.write(JSON.stringify(ast, null, 4));
         } else {
             process.stdout.write(jsCode);
         }
-        
+
         if (JS_OUTPUT_FILE) {
-			mv(shen_output_js, JS_OUTPUT_FILE, {mkdirp: true}, function(err) {
-				if (err instanceof Error)
-            		throw err;
-            	cleanUp(code, filename);
-			});
-        }else{
-        	cleanUp(code, filename);
+            mv(shen_output_js, JS_OUTPUT_FILE, {
+                mkdirp: true
+            }, function(err) {
+                if (err instanceof Error)
+                    throw err;
+                cleanUp(code, filename);
+            });
+        } else {
+            cleanUp(code, filename);
         }
     });
 } else {

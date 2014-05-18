@@ -4,10 +4,9 @@ Erlang JavaScript Parse Transform
 Prerequisites:
 ---------
 
-Erlang: Best way is to install through brew install erlang
-Test it working with `erl`
+Erlang: Best way is to install through `brew install erlang` on Mac or build from source. 
 
-Shen: A project that compiles erlang to JavaScript, node.js, Browser, Client-Side FRP
+Shen: A project from n2o folks that compiles erlang to JavaScript, node.js, Browser, Client-Side FRP
 
 Esprima: Build JS AST for the generated JS code.
 
@@ -27,6 +26,16 @@ Install
 ---------
 
 Run `npm install erlang-shen-js -g`
+
+
+Roadmap
+-------
+
+1. multiple clauses for lambdas
+2. list comprehensions
+3. more JavaScript/OTP mappings
+4. if statement :-)
+
 
 Credits
 -------
