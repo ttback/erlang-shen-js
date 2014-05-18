@@ -6,7 +6,6 @@ var esprima = require('esprima');
 var exec = require('exec');
 var path = require('path');
 var mv = require('mv');
-var tmp = require('tmp');
 
 //Config flags
 var TMP_ERL_FILE_PATH = "./tmp.erl";
