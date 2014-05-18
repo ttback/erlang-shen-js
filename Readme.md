@@ -63,5 +63,7 @@ Roadmap
 Credits
 -------
 
+Creator of Shen:
+
     * Maxim Sokhatsky
     * Andrew Zadorozhny
