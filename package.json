@@ -4,7 +4,7 @@
   "description": "Erlang to Mozilla AST Tree via shen",
   "main": "erlang.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test/test.js --require should --reporter=nyan --ui bdd"
   },
   "repository": {
     "type": "git",
@@ -23,10 +23,14 @@
     "url": "https://github.com/ttback/erlang-shen-js/issues"
   },
   "homepage": "https://github.com/ttback/erlang-shen-js",
-  "devDependencies": {
+  "dependencies": {
     "esprima": "^1.2.1",
     "commander": "^2.2.0",
     "exec": "^0.1.1",
     "mv": "^2.0.0"
+  },
+  "devDependencies": {
+    "mocha": "^1.18.2",
+    "should": "^3.3.1"
   }
 }
