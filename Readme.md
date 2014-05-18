@@ -14,7 +14,21 @@ Esprima: Build JS AST for the generated JS code.
 Usage:
 ---------
 
-  Options:
+  Node.js
+  
+  ```Javascript
+  var erlangjs = require("erlang-shen-js");
+  erlangjs.wrap(code, function(ast) {
+        //ast: the js obj holding the AST tree
+  });
+  
+  erlangjs.parse(code, function(ast) {
+        //ast: the js obj holding the AST tree
+  });
+  
+  ```
+
+  Commandline Options:
 
     -h, --help           Output usage information
     -V, --version        Output the version number
