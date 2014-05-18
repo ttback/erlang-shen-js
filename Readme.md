@@ -1,6 +1,11 @@
 Erlang JavaScript Parse Transform
 =================================
 
+Goal:
+---------
+Make Erlang usable for online editors and live code teaching platforms like Code School and Code Combat.
+
+
 Prerequisites:
 ---------
 
