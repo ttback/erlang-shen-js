@@ -48,13 +48,10 @@ if (program.args.length > 0) {
     INPUT_ERLANG_FILE_PATH = program.args[0];
 } else {
     console.log("Please enter erlang file path. i.e. examples/sample.erl")
-    process.exit();
 }
 
 function cleanUp(code, filename) {
     deleteFiles(filename);
-
-    process.exit(code);
 }
 
 
@@ -71,7 +68,7 @@ if (fs.existsSync(INPUT_ERLANG_FILE_PATH)) {
         var shen_output_js = DEFAULT_JS_OUTPUT_DIR_PATH + js_filename
 
         var jsCode = fs.readFileSync(shen_output_js, "utf8");
-        var ast = esprima.parse(jsCode);
+        var ast = esprima.parse(jsCode, {range: true});
 
         if (JS_AST_OUTPUT_ENABLED) {
             process.stdout.write(JSON.stringify(ast, null, 4));
