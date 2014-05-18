@@ -2,7 +2,7 @@
   "name": "erlang-shen-js",
   "version": "0.0.1",
   "description": "Erlang to Mozilla AST Tree via shen",
-  "main": "index.js",
+  "main": "erlang.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

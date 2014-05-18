@@ -39,7 +39,7 @@ program
 if (program.args.length > 0) {
     INPUT_ERLANG_FILE_PATH = program.args[0];
 } else {
-    console.log("Please enter erlang file path. i.e. examples/samples.erl")
+    console.log("Please enter erlang file path. i.e. examples/sample.erl")
     process.exit();
 }
 
